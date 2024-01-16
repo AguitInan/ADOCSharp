@@ -83,6 +83,21 @@ namespace Exercice01ADO.Data
                 return ok = false;
         }
 
-
+        public static List<Etudiant> AvoirListeEtudiant()
+        {
+            List<Etudiant> liste = new List<Etudiant>();
+            SqlCommand command = new SqlCommand("SELECT * FROM etudiant order by nom ASC", Connection);
+            Connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Etudiant p = new Etudiant() { Id = reader.GetInt32(0), Nom = reader.GetString(1), Prenom = reader.GetString(2), NumeroClasse = reader.GetString(3), DateDiplome = reader.GetString(4) };
+                liste.Add(p);
+            }
+            reader.Close();
+            command.Dispose();
+            Connection.Close();
+            return liste;
+        }
     }
 }
