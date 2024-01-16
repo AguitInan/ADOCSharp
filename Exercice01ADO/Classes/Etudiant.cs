@@ -31,7 +31,6 @@ namespace Exercice01ADO.Classes
         }
         public Etudiant(string n, string p, string c, string d)
         {
-            //Id = id;
             Nom = n;
             Prenom = p;
             NumeroClasse = c;
