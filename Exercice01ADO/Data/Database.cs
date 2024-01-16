@@ -32,7 +32,23 @@ namespace Exercice01ADO.Data
                 return ok = false;
         }
 
-
+        public static Etudiant TrouverEtudiant(string nom, string prenom)
+        {
+            Etudiant p = null;
+            SqlCommand command = new SqlCommand("SELECT * FROM etudiant Where prenom = @Prenom AND nom = @Nom", Connection);
+            command.Parameters.Add(new SqlParameter("@Nom", System.Data.SqlDbType.VarChar) { Value = nom });
+            command.Parameters.Add(new SqlParameter("@Prenom", System.Data.SqlDbType.VarChar) { Value = prenom });
+            Connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                p = new Etudiant() { Id = reader.GetInt32(0), Nom = reader.GetString(1), Prenom = reader.GetString(2), NumeroClasse = reader.GetString(3), DateDiplome = reader.GetString(4) };
+            }
+            reader.Close();
+            command.Dispose();
+            Connection.Close();
+            return p;
+        }
 
 
 
