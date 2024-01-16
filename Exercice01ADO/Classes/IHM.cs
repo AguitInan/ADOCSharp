@@ -78,7 +78,29 @@ namespace Exercice01ADO.Classes
             Console.ReadLine();
             Console.Clear();
         }
-
+        static void AfficherListeEtudiant()
+        {
+            Console.Clear();
+            Console.WriteLine("****** Afficher la liste des étudiants ******");
+            List<Etudiant> etudiants = new List<Etudiant>(Etudiant.GetList());
+            if (etudiants.Count <= 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Erreur ! Aucun étudiant dans la liste");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                foreach (Etudiant p in etudiants)
+                {
+                    Console.WriteLine(p.ToString());
+                    Console.WriteLine("-----------------------------------");
+                }
+            }
+            Console.WriteLine("Appuyez sur Enter pour revenir au menu principal...");
+            Console.ReadLine();
+            Console.Clear();
+        }
 
 
 
