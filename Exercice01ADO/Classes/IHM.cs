@@ -65,7 +65,7 @@ namespace Exercice01ADO.Classes
             Console.WriteLine("****** Création d'un nouvel étudiant ******");
             Console.WriteLine("Le nom de l'étudiant : ");
             string nom = Console.ReadLine();
-            Console.WriteLine("Le prenom de l'étudiant : ");
+            Console.WriteLine("Le prénom de l'étudiant : ");
             string prenom = Console.ReadLine();
             Console.WriteLine("Le numéro de classe de l'étudiant : ");
             string numeroClasse = Console.ReadLine();
@@ -143,6 +143,36 @@ namespace Exercice01ADO.Classes
             Console.ReadLine();
             Console.Clear();
         }
+        static void SupprimerEtudiant()
+        {
+            Console.Clear();
+            Console.WriteLine("****** Suppression d'un étudiant ******");
+            Etudiant p = new Etudiant();
+            p = RechercherEtudiant();
+            Console.WriteLine(p.ToString());
+            Console.WriteLine("****** Suppression, de {0} {1} ******\n", p.Nom, p.Prenom);
+            string confirm;
+            Console.Write("Etes-vous sûr de vouloir supprimer cet étudiant ? (oui/non) :");
+            confirm = Console.ReadLine().ToUpper();
+            while (confirm != "OUI" && confirm != "NON")
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("Erreur Veuillez saisir OUI / NON : ");
+                Console.ForegroundColor = ConsoleColor.White;
+                confirm = Console.ReadLine().ToUpper();
+            }
+            if (confirm == "OUI")
+            {
+                p.Del();
+            }
+            else
+            {
+                Console.WriteLine("Vous avez annulé la suppression...");
+            }
 
+            Console.WriteLine("Appuyez sur Enter pour revenir au menu principal...");
+            Console.ReadLine();
+            Console.Clear();
+        }
     }
 }
