@@ -88,7 +88,23 @@ namespace Exercice01ADO.Classes
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
-
+        public Etudiant Get(string nom, string prenom)
+        {
+            Etudiant p = DataBase.TrouverEtudiant(nom, prenom);
+            if (p != null)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Etudiant trouvé...");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Aucun étudiant trouvé avec ces éléments...");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            return p;
+        }
 
 
 
