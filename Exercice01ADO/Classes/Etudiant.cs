@@ -106,7 +106,10 @@ namespace Exercice01ADO.Classes
             return p;
         }
 
-
+        public static List<Etudiant> GetList()
+        {
+            return DataBase.AvoirListeEtudiant();
+        }
 
 
 
