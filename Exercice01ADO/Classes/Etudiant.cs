@@ -56,8 +56,38 @@ namespace Exercice01ADO.Classes
             }
         }
 
+        public void Del()
+        {
+            if (DataBase.SupprimerEtudiant(this))
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Etudiant supprimé...");
+                Console.ForegroundColor = ConsoleColor.White;
 
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Erreur lors supression de l'étudiant...");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
+        public void Update()
+        {
+            if (DataBase.UpdateEtudiant(this))
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Etudiant modifié...");
+                Console.ForegroundColor = ConsoleColor.White;
 
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Erreur lors de la modification de l'étudiant...");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
 
 
 
