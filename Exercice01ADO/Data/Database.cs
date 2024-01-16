@@ -49,7 +49,24 @@ namespace Exercice01ADO.Data
             Connection.Close();
             return p;
         }
-
+        public static bool UpdateEtudiant(Etudiant p)
+        {
+            bool ok = false;
+            SqlCommand command = new SqlCommand("UPDATE etudiant SET nom=@Nom,prenom=@Prenom,numeroClasse=@NumeroClasse,dateDiplome=@DateDiplome where id = @Id ", Connection);
+            command.Parameters.Add(new SqlParameter("@Id", System.Data.SqlDbType.Int) { Value = p.Id });
+            command.Parameters.Add(new SqlParameter("@Nom", System.Data.SqlDbType.VarChar) { Value = p.Nom });
+            command.Parameters.Add(new SqlParameter("@Prenom", System.Data.SqlDbType.VarChar) { Value = p.Prenom });
+            command.Parameters.Add(new SqlParameter("@NumeroClasse", System.Data.SqlDbType.VarChar) { Value = p.NumeroClasse });
+            command.Parameters.Add(new SqlParameter("@DateDiplome", System.Data.SqlDbType.VarChar) { Value = p.DateDiplome });
+            Connection.Open();
+            int nbLigne = command.ExecuteNonQuery();
+            command.Dispose();
+            Connection.Close();
+            if (nbLigne > 0)
+                return ok = true;
+            else
+                return ok = false;
+        }
 
 
 
