@@ -112,7 +112,37 @@ namespace Exercice01ADO.Classes
             p = p.Get(nom, prenom);
             return p;
         }
+        static void ModifierEtudiant()
+        {
+            Console.Clear();
+            Console.WriteLine("****** Modification d'un nouvel étudiant ******");
+            Etudiant p = RechercherEtudiant();
+            if (p != null)
+            {
+                Console.WriteLine(p.ToString());
+                Console.WriteLine("****** Modification de {0} {1} ******\n", p.Nom, p.Prenom);
 
+                Console.WriteLine("Modifier le nom de l'étudiant : ");
+                p.Nom = Console.ReadLine();
+                Console.WriteLine("Modifier le prénom de l'étudiant : ");
+                p.Prenom = Console.ReadLine();
+                Console.WriteLine("Modifier le numéro de classe de l'étudiant : ");
+                p.NumeroClasse = Console.ReadLine();
+                Console.WriteLine("Modifier la date d'obtention de diplôme de l'étudiant (AAAA-MM-JJ) : ");
+                p.DateDiplome = Console.ReadLine();
+                p.Update();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Erreur ! Aucun étudiant Trouvé");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+
+            Console.WriteLine("Appuyez sur Enter pour revenir au menu principal...");
+            Console.ReadLine();
+            Console.Clear();
+        }
 
     }
 }
