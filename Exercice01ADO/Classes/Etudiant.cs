@@ -39,7 +39,22 @@ namespace Exercice01ADO.Classes
         }
 
 
+        public void Add()
+        {
+            if (DataBase.AjouterEtudiant(this))
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Etudiant ajouté...");
+                Console.ForegroundColor = ConsoleColor.White;
 
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Erreur lors ajout de l'étudiant...");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
 
 
 
