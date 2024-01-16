@@ -18,7 +18,7 @@ namespace Exercice01ADO.Classes
                 Console.WriteLine("1-Créer Etudiant");
                 Console.WriteLine("2-Consulter Liste Etudiants");
                 Console.WriteLine("3-Modifier Etudiant");
-                Console.WriteLine("4-Supprimmer Etudiant");
+                Console.WriteLine("4-Supprimer Etudiant");
                 Console.WriteLine("0-Quitter");
                 Console.Write("Entrez votre choix : ");
                 while (!valid)
@@ -101,7 +101,17 @@ namespace Exercice01ADO.Classes
             Console.ReadLine();
             Console.Clear();
         }
-
+        static Etudiant RechercherEtudiant()
+        {
+            Console.WriteLine("*** Recherche d'un étudiant ***");
+            Console.WriteLine("Saisir le nom de l'étudiant : ");
+            string nom = Console.ReadLine();
+            Console.WriteLine("Saisir le prénom de l'étudiant : ");
+            string prenom = Console.ReadLine();
+            Etudiant p = new Etudiant();
+            p = p.Get(nom, prenom);
+            return p;
+        }
 
 
     }
