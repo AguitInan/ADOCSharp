@@ -111,7 +111,10 @@ namespace Exercice01ADO.Classes
         }
 
 
-
+        public override string ToString()
+        {
+            return Nom + " " + Prenom + " - Numéro de classe : " + NumeroClasse + " Date de diplôme : " + DateDiplome;
+        }
 
     }
 }
