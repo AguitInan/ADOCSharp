@@ -59,7 +59,25 @@ namespace Exercice01ADO.Classes
 
             } while (choix != 0);
         }
+        static void CreationEtudiant()
+        {
+            Console.Clear();
+            Console.WriteLine("****** Création d'un nouvel étudiant ******");
+            Console.WriteLine("Le nom de l'étudiant : ");
+            string nom = Console.ReadLine();
+            Console.WriteLine("Le prenom de l'étudiant : ");
+            string prenom = Console.ReadLine();
+            Console.WriteLine("Le numéro de classe de l'étudiant : ");
+            string numeroClasse = Console.ReadLine();
+            Console.WriteLine("La date d'obtention de diplôme de l'étudiant (AAAA-MM-JJ) : ");
+            string dateDiplome = Console.ReadLine();
+            Etudiant p = new Etudiant(nom, prenom, numeroClasse, dateDiplome);
+            p.Add();
 
+            Console.WriteLine("Appuyez sur Enter pour revenir au menu principal...");
+            Console.ReadLine();
+            Console.Clear();
+        }
 
 
 
