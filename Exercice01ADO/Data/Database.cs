@@ -68,7 +68,20 @@ namespace Exercice01ADO.Data
                 return ok = false;
         }
 
-
+        public static bool SupprimerEtudiant(Etudiant p)
+        {
+            bool ok = false;
+            SqlCommand command = new SqlCommand("DELETE FROM etudiant Where id=@Id", Connection);
+            command.Parameters.Add(new SqlParameter("@Id", System.Data.SqlDbType.Int) { Value = p.Id });
+            Connection.Open();
+            int nbLigne = command.ExecuteNonQuery();
+            command.Dispose();
+            Connection.Close();
+            if (nbLigne > 0)
+                return ok = true;
+            else
+                return ok = false;
+        }
 
 
     }
