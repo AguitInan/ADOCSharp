@@ -99,7 +99,42 @@ namespace Exercice02Commande.Data
             }
         }
 
-        
+        public static List<Client> ObtenirClients()
+        {
+            List<Client> clients = new List<Client>();
+            try
+            {
+                using (SqlCommand command = new SqlCommand("SELECT Id, Nom, Prenom, Adresse, CodePostal, Ville, Telephone FROM client", Connection))
+                {
+                    Connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            clients.Add(new Client
+                            {
+                                Id = reader.GetInt32(0),
+                                Nom = reader.GetString(1),
+                                Prenom = reader.GetString(2),
+                                Adresse = reader.GetString(3),
+                                CodePostal = reader.GetString(4),
+                                Ville = reader.GetString(5),
+                                Telephone = reader.GetString(6)
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return clients;
+        }
 
         
 
