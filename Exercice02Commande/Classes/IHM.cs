@@ -183,7 +183,19 @@ namespace Exercice02Commande.Classes
             }
         }
 
-
+        private static void SupprimerCommande()
+        {
+            Console.Write("Entrez l'ID de la commande à supprimer : ");
+            int id = int.Parse(Console.ReadLine());
+            if (DataBase.SupprimerCommande(id))
+            {
+                Console.WriteLine("Commande supprimée avec succès.");
+            }
+            else
+            {
+                Console.WriteLine("Erreur lors de la suppression de la commande.");
+            }
+        }
 
 
     }
