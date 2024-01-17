@@ -90,7 +90,33 @@ namespace Exercice02Commande.Classes
             }
         }
 
+        private static void ModifierClient()
+        {
+            Console.Write("Entrez l'ID du client à modifier : ");
+            int id = int.Parse(Console.ReadLine());
+            Console.Write("Entrez le nouveau nom du client : ");
+            string nom = Console.ReadLine();
+            Console.Write("Entrez le nouveau prénom du client : ");
+            string prenom = Console.ReadLine();
+            Console.Write("Entrez la nouvelle adresse du client : ");
+            string adresse = Console.ReadLine();
+            Console.Write("Entrez le nouveau code postal du client : ");
+            string codePostal = Console.ReadLine();
+            Console.Write("Entrez la nouvelle ville du client : ");
+            string ville = Console.ReadLine();
+            Console.Write("Entrez le nouveau téléphone du client : ");
+            string telephone = Console.ReadLine();
 
+            Client client = new Client(nom, prenom, adresse, codePostal, ville, telephone) { Id = id };
+            if (DataBase.ModifierClient(client))
+            {
+                Console.WriteLine("Client modifié avec succès.");
+            }
+            else
+            {
+                Console.WriteLine("Erreur lors de la modification du client.");
+            }
+        }
 
 
 
