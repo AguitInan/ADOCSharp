@@ -187,7 +187,32 @@ namespace Exercice02Commande.Data
             }
         }
 
-        
+        public static bool ModifierCommande(Commande commande)
+        {
+            try
+            {
+                using (SqlCommand command = new SqlCommand("UPDATE commande SET ClientId = @ClientId, Date = @Date, Total = @Total WHERE Id = @Id", Connection))
+                {
+                    command.Parameters.AddWithValue("@Id", commande.Id);
+                    command.Parameters.AddWithValue("@ClientId", commande.ClientId);
+                    command.Parameters.AddWithValue("@Date", commande.Date);
+                    command.Parameters.AddWithValue("@Total", commande.Total);
+
+                    Connection.Open();
+                    int result = command.ExecuteNonQuery();
+                    return result > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
 
         
     }
