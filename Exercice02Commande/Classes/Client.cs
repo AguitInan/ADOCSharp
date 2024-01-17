@@ -34,6 +34,9 @@ namespace Exercice02Commande.Classes
             Commandes = new List<Commande>();
         }
 
-
+        public override string ToString()
+        {
+            return $"Client ID: {Id}, Nom: {Nom}, Prénom: {Prenom}, Adresse: {Adresse}, Code Postal: {CodePostal}, Ville: {Ville}, Téléphone: {Telephone}";
+        }
     }
 }
