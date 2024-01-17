@@ -45,7 +45,29 @@ namespace Exercice02Commande.Data
             }
         }
 
-        
+        public static bool SupprimerClient(int clientId)
+        {
+            try
+            {
+                using (SqlCommand command = new SqlCommand("DELETE FROM client WHERE Id = @Id", Connection))
+                {
+                    command.Parameters.AddWithValue("@Id", clientId);
+
+                    Connection.Open();
+                    int result = command.ExecuteNonQuery();
+                    return result > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
 
         
 
