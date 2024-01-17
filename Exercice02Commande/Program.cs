@@ -15,5 +15,3 @@ namespace Exercice02Commande
         }
     }
 }
-
-
