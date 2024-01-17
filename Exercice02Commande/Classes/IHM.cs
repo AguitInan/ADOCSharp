@@ -132,7 +132,14 @@ namespace Exercice02Commande.Classes
             }
         }
 
-
+        private static void AfficherClients()
+        {
+            List<Client> clients = DataBase.ObtenirClients();
+            foreach (Client client in clients)
+            {
+                Console.WriteLine(client); // Appelle implicitement client.ToString()
+            }
+        }
 
 
 
