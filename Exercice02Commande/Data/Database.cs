@@ -214,6 +214,38 @@ namespace Exercice02Commande.Data
             }
         }
 
-        
+        public static List<Commande> ObtenirCommandes()
+        {
+            List<Commande> commandes = new List<Commande>();
+            try
+            {
+                using (SqlCommand command = new SqlCommand("SELECT Id, ClientId, Date, Total FROM commande", Connection))
+                {
+                    Connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            commandes.Add(new Commande
+                            {
+                                Id = reader.GetInt32(0),
+                                ClientId = reader.GetInt32(1),
+                                Date = reader.GetDateTime(2),
+                                Total = reader.GetDecimal(3)
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return commandes;
+        }
     }
 }
