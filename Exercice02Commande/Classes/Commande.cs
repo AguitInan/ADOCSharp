@@ -13,7 +13,14 @@ namespace Exercice02Commande.Classes
         public DateTime Date { get; set; }
         public decimal Total { get; set; }
 
+        public Commande() { }
 
+        public Commande(int clientId, DateTime date, decimal total)
+        {
+            ClientId = clientId;
+            Date = date;
+            Total = total;
+        }
 
 
     }
