@@ -197,6 +197,13 @@ namespace Exercice02Commande.Classes
             }
         }
 
-
+        private static void AfficherCommandes()
+        {
+            List<Commande> commandes = DataBase.ObtenirCommandes();
+            foreach (Commande commande in commandes)
+            {
+                Console.WriteLine(commande); // Appelle implicitement commande.ToString()
+            }
+        }
     }
 }
