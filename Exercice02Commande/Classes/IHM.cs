@@ -64,7 +64,31 @@ namespace Exercice02Commande.Classes
             }
         }
 
+        private static void AjouterClient()
+        {
+            Console.Write("Entrez le nom du client : ");
+            string nom = Console.ReadLine();
+            Console.Write("Entrez le prénom du client : ");
+            string prenom = Console.ReadLine();
+            Console.Write("Entrez l'adresse du client : ");
+            string adresse = Console.ReadLine();
+            Console.Write("Entrez le code postal du client : ");
+            string codePostal = Console.ReadLine();
+            Console.Write("Entrez la ville du client : ");
+            string ville = Console.ReadLine();
+            Console.Write("Entrez le téléphone du client : ");
+            string telephone = Console.ReadLine();
 
+            Client client = new Client(nom, prenom, adresse, codePostal, ville, telephone);
+            if (DataBase.AjouterClient(client))
+            {
+                Console.WriteLine("Client ajouté avec succès.");
+            }
+            else
+            {
+                Console.WriteLine("Erreur lors de l'ajout du client.");
+            }
+        }
 
 
 
