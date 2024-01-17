@@ -163,7 +163,29 @@ namespace Exercice02Commande.Data
             }
         }
 
-        
+        public static bool SupprimerCommande(int commandeId)
+        {
+            try
+            {
+                using (SqlCommand command = new SqlCommand("DELETE FROM commande WHERE Id = @Id", Connection))
+                {
+                    command.Parameters.AddWithValue("@Id", commandeId);
+
+                    Connection.Open();
+                    int result = command.ExecuteNonQuery();
+                    return result > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
 
         
 
