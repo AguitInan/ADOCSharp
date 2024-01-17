@@ -141,7 +141,25 @@ namespace Exercice02Commande.Classes
             }
         }
 
+        private static void AjouterCommande()
+        {
+            Console.Write("Entrez l'ID du client pour la commande : ");
+            int clientId = int.Parse(Console.ReadLine());
+            Console.Write("Entrez la date de la commande (format YYYY-MM-DD) : ");
+            DateTime date = DateTime.ParseExact(Console.ReadLine(), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            Console.Write("Entrez le montant total de la commande : ");
+            decimal total = decimal.Parse(Console.ReadLine());
 
+            Commande commande = new Commande(clientId, date, total);
+            if (DataBase.AjouterCommande(commande))
+            {
+                Console.WriteLine("Commande ajoutée avec succès.");
+            }
+            else
+            {
+                Console.WriteLine("Erreur lors de l'ajout de la commande.");
+            }
+        }
 
 
 
