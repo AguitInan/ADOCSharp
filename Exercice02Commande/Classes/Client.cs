@@ -23,7 +23,16 @@ namespace Exercice02Commande.Classes
 
         }
 
-
+        public Client(string nom, string prenom, string adresse, string codePostal, string ville, string telephone)
+        {
+            Nom = nom;
+            Prenom = prenom;
+            Adresse = adresse;
+            CodePostal = codePostal;
+            Ville = ville;
+            Telephone = telephone;
+            Commandes = new List<Commande>();
+        }
 
 
     }
