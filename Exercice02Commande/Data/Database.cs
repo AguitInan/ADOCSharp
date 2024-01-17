@@ -136,7 +136,32 @@ namespace Exercice02Commande.Data
             return clients;
         }
 
-        
+        // Méthodes pour la gestion des Commandes
+        public static bool AjouterCommande(Commande commande)
+        {
+            try
+            {
+                using (SqlCommand command = new SqlCommand("INSERT INTO commande (ClientId, Date, Total) VALUES (@ClientId, @Date, @Total)", Connection))
+                {
+                    command.Parameters.AddWithValue("@ClientId", commande.ClientId);
+                    command.Parameters.AddWithValue("@Date", commande.Date);
+                    command.Parameters.AddWithValue("@Total", commande.Total);
+
+                    Connection.Open();
+                    int result = command.ExecuteNonQuery();
+                    return result > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
 
         
 
