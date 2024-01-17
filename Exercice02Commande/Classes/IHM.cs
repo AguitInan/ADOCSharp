@@ -161,7 +161,27 @@ namespace Exercice02Commande.Classes
             }
         }
 
+        private static void ModifierCommande()
+        {
+            Console.Write("Entrez l'ID de la commande à modifier : ");
+            int id = int.Parse(Console.ReadLine());
+            Console.Write("Entrez le nouvel ID client pour la commande : ");
+            int clientId = int.Parse(Console.ReadLine());
+            Console.Write("Entrez la nouvelle date de la commande (format YYYY-MM-DD) : ");
+            DateTime date = DateTime.ParseExact(Console.ReadLine(), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            Console.Write("Entrez le nouveau montant total de la commande : ");
+            decimal total = decimal.Parse(Console.ReadLine());
 
+            Commande commande = new Commande(clientId, date, total) { Id = id };
+            if (DataBase.ModifierCommande(commande))
+            {
+                Console.WriteLine("Commande modifiée avec succès.");
+            }
+            else
+            {
+                Console.WriteLine("Erreur lors de la modification de la commande.");
+            }
+        }
 
 
 
