@@ -118,7 +118,19 @@ namespace Exercice02Commande.Classes
             }
         }
 
-
+        private static void SupprimerClient()
+        {
+            Console.Write("Entrez l'ID du client à supprimer : ");
+            int id = int.Parse(Console.ReadLine());
+            if (DataBase.SupprimerClient(id))
+            {
+                Console.WriteLine("Client supprimé avec succès.");
+            }
+            else
+            {
+                Console.WriteLine("Erreur lors de la suppression du client.");
+            }
+        }
 
 
 
