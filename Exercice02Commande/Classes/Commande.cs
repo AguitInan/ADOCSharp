@@ -22,6 +22,9 @@ namespace Exercice02Commande.Classes
             Total = total;
         }
 
-
+        public override string ToString()
+        {
+            return $"Commande ID: {Id}, Client ID: {ClientId}, Date: {Date.ToString("yyyy-MM-dd")}, Total: {Total}";
+        }
     }
 }
