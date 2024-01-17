@@ -17,7 +17,11 @@ namespace Exercice02Commande.Classes
         public string Telephone { get; set; }
         public List<Commande> Commandes { get; set; }
 
+        public Client()
+        {
+            Commandes = new List<Commande>();
 
+        }
 
 
 
